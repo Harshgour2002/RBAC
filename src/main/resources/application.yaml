@@ -1,3 +1,26 @@
 spring:
   application:
-    name: RBAC
+    name: university-auth
+  datasource:
+    url: jdbc:mysql://localhost:3306/university_auth?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+security:
+  jwt:
+    # base64 encoded 256-bit secret (generate securely for prod)
+    secret: ${JWT_SECRET:REPLACE_WITH_BASE64_ENCODED_SECRET_KEY_MIN_32_BYTES}
+    access-token-expiration-ms: ${JWT_ACCESS_EXP_MS:900000}
+    refresh-token-expiration-ms: ${JWT_REFRESH_EXP_MS:604800000}
+
+logging:
+  level:
+    org.springframework.security: INFO
