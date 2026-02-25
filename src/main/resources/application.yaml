@@ -1,10 +1,10 @@
 spring:
   application:
-    name: university-auth
+    name: RBAC
   datasource:
-    url: jdbc:mysql://localhost:3306/university_auth?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:root}
+    url: jdbc:mysql://localhost:3308/rbac_db
+    username: ${DB_USERNAME:rbac_user}
+    password: ${DB_PASSWORD:rbac_pass}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -12,6 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
     open-in-view: false
 
 security:
