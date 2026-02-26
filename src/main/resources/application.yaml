@@ -18,8 +18,10 @@ spring:
 security:
   jwt:
     # base64 encoded 256-bit secret default for local dev only; override in production
-    secret: ${JWT_SECRET:YjY0LWRldi1zZWNyZXQteHl6LXVuaXZlcnNpdHktYXV0aC0zMi1ieXRlcw==}
+    secret: ${JWT_SECRET:MS3IeVCphIXxfup22t5LjoY34DSreL3m47bQOlzvSxMpY6LESpPLrzWyaYMI1PrGpkDPLYJ8iZOGR/REe7q9eg==}
+    # Access token = 15 minutes
     access-token-expiration-ms: ${JWT_ACCESS_EXP_MS:900000}
+    # Refresh token = 7 days
     refresh-token-expiration-ms: ${JWT_REFRESH_EXP_MS:604800000}
 
 logging:
