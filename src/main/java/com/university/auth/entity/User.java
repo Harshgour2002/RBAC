@@ -14,6 +14,8 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,8 +32,9 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @org.hibernate.annotations.UuidGenerator
+    private UUID id;
 
     @Column(nullable = false, unique = true, length = 100)
     private String email;

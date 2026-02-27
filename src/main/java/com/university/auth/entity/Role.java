@@ -12,6 +12,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,8 +30,9 @@ import lombok.Setter;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @org.hibernate.annotations.UuidGenerator
+    private UUID id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String name;

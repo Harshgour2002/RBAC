@@ -6,6 +6,7 @@ import com.university.auth.entity.User;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Getter
 public class CustomUserDetails implements UserDetails {
 
-    private final Long userId;
+    private final UUID userId;
     private final String username;
     private final String password;
     private final boolean active;
@@ -24,6 +25,7 @@ public class CustomUserDetails implements UserDetails {
     private final Collection<? extends GrantedAuthority> authorities;
 
     public CustomUserDetails(User user) {
+        // this.userId = user.getId();
         this.userId = user.getId();
         this.username = user.getEmail();
         this.password = user.getPassword();

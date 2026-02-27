@@ -1,5 +1,7 @@
 package com.university.auth.entity;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +24,9 @@ import lombok.Setter;
 public class Permission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @org.hibernate.annotations.UuidGenerator
+    private UUID id;
 
     @Column(nullable = false, unique = true, length = 80)
     private String name;
