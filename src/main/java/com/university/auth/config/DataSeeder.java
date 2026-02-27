@@ -6,8 +6,6 @@ import com.university.auth.enums.PermissionName;
 import com.university.auth.enums.RoleName;
 import com.university.auth.repository.PermissionRepository;
 import com.university.auth.repository.RoleRepository;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

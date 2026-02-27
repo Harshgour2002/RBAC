@@ -55,4 +55,10 @@ public class RefreshTokenService {
         refreshTokenRepository.delete(existing);
         return createRefreshToken(user);
     }
+
+    @Transactional
+    public void deleteRefreshToken(String token){
+        RefreshToken refreshToken = refreshTokenRepository.findByToken(token).orElseThrow(() -> new ResourceNotFoundException("Refresh Token Not found"));
+        refreshTokenRepository.delete(refreshToken);    
+    }
 }

@@ -102,4 +102,9 @@ public class AuthService {
                 userDetails.getRoles(),
                 userDetails.getPermissions());
     }
+
+    @Transactional
+    public void logout(RefreshTokenRequest request){
+        refreshTokenService.deleteRefreshToken(request.refreshToken());
+    }
 }
