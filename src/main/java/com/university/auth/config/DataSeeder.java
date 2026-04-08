@@ -1,10 +1,12 @@
 package com.university.auth.config;
 
 import com.university.auth.entity.Permission;
+import com.university.auth.entity.Product;
 import com.university.auth.entity.Role;
 import com.university.auth.enums.PermissionName;
 import com.university.auth.enums.RoleName;
 import com.university.auth.repository.PermissionRepository;
+import com.university.auth.repository.ProductRepository;
 import com.university.auth.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private final RoleRepository roleRepository;
     private final PermissionRepository permissionRepository;
+    private final ProductRepository productRepository;
 
     @Override
     @Transactional
@@ -60,6 +63,11 @@ public class DataSeeder implements CommandLineRunner {
         roleRepository.save(userRole);
         roleRepository.save(adminRole);
 
+        // Create sample products
+        if (productRepository.count() == 0) {
+            createSampleProducts();
+        }
+
         log.info("RBAC seed complete");
     }
 
@@ -81,5 +89,30 @@ public class DataSeeder implements CommandLineRunner {
                                 .description(description)
                                 .build()
                 ));
+    }
+
+    private void createSampleProducts() {
+        productRepository.save(Product.builder()
+                .name("Laptop")
+                .description("High-performance laptop for professionals")
+                .price(java.math.BigDecimal.valueOf(1299.99))
+                .quantity(10)
+                .build());
+
+        productRepository.save(Product.builder()
+                .name("Mouse")
+                .description("Wireless optical mouse")
+                .price(java.math.BigDecimal.valueOf(29.99))
+                .quantity(50)
+                .build());
+
+        productRepository.save(Product.builder()
+                .name("Keyboard")
+                .description("Mechanical keyboard with RGB lighting")
+                .price(java.math.BigDecimal.valueOf(89.99))
+                .quantity(25)
+                .build());
+
+        log.info("Sample products created");
     }
 }

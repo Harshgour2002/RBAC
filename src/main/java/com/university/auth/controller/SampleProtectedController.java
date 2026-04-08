@@ -33,7 +33,6 @@ public class SampleProtectedController {
         return ApiResponse.<String>builder()
                 .success(true)
                 .message("Access granted by ADMIN role")
-                .data("ADMIN_ROLE_OK")
                 .data("ADMIN_ENDPOINT_OK")
                 .build();
     }
